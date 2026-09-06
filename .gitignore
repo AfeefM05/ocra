@@ -1,0 +1,38 @@
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+dist-ssr/
+frontend/dist-ssr/
+*.local
+.bolt/
+frontend/.bolt/
+
+# Python / Backend
+__pycache__/
+backend/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+backend/env/
+backend/venv/
+backend/.venv/
+
+# Logs & Environment
+*.log
+logs/
+.env
+.env.*
+!.env.example
+
+# IDE & OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

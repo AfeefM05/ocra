@@ -1,0 +1,120 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "PFZ-04",
+      "properties": {
+        "zone_id": "PFZ-04",
+        "name": "PFZ Alpha - Rameswaram Coast",
+        "chlorophyll_mg_m3": 2.8,
+        "sst_c": 28.4,
+        "wave_height_m": 1.2,
+        "wind_speed_kmh": 12.0,
+        "confidence_score": 0.88,
+        "is_restricted": false,
+        "is_restricted_imbl": false,
+        "status": "SAFE"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [79.31, 9.28],
+            [79.36, 9.28],
+            [79.36, 9.33],
+            [79.31, 9.33],
+            [79.31, 9.28]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "PFZ-02",
+      "properties": {
+        "zone_id": "PFZ-02",
+        "name": "PFZ Beta - Palk Bay South Catch",
+        "chlorophyll_mg_m3": 3.1,
+        "sst_c": 29.1,
+        "wave_height_m": 0.9,
+        "wind_speed_kmh": 9.5,
+        "confidence_score": 0.92,
+        "is_restricted": false,
+        "is_restricted_imbl": false,
+        "status": "SAFE"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [79.20, 9.15],
+            [79.28, 9.22],
+            [79.35, 9.18],
+            [79.30, 9.08],
+            [79.22, 9.08],
+            [79.20, 9.15]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "HAZARD-01",
+      "properties": {
+        "zone_id": "HAZARD-01",
+        "name": "High Wave Hazard - Offshore Mannar",
+        "chlorophyll_mg_m3": 1.4,
+        "sst_c": 27.8,
+        "wave_height_m": 3.4,
+        "wind_speed_kmh": 32.0,
+        "confidence_score": 0.95,
+        "is_restricted": true,
+        "is_restricted_imbl": false,
+        "status": "DANGER"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [79.45, 9.35],
+            [79.58, 9.42],
+            [79.62, 9.54],
+            [79.48, 9.52],
+            [79.45, 9.35]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "IMBL-BUFFER-01",
+      "properties": {
+        "zone_id": "IMBL-BUFFER-01",
+        "name": "International Boundary Restriction Zone",
+        "chlorophyll_mg_m3": 2.1,
+        "sst_c": 28.2,
+        "wave_height_m": 1.6,
+        "wind_speed_kmh": 16.0,
+        "confidence_score": 0.99,
+        "is_restricted": true,
+        "is_restricted_imbl": true,
+        "status": "RESTRICTED"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [79.60, 9.15],
+            [79.65, 9.35],
+            [79.68, 9.55],
+            [79.74, 9.55],
+            [79.70, 9.35],
+            [79.65, 9.15],
+            [79.60, 9.15]
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ocean-950: #030d1c;
+  --ocean-900: #061528;
+  --ocean-800: #0a1f35;
+  --ocean-700: #0f2e4d;
+  --aqua-500: #00e5d0;
+  --aqua-400: #1affed;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background-color: var(--ocean-950);
+  color: #e6f0fa;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Leaflet dark map overrides */
+.leaflet-container {
+  background: #061528;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.leaflet-tile {
+  filter: brightness(0.85) contrast(1.1) saturate(1.2);
+}
+
+.leaflet-control-zoom a {
+  background-color: rgba(10, 31, 53, 0.9) !important;
+  color: #1affed !important;
+  border-color: rgba(26, 255, 237, 0.2) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: rgba(15, 46, 77, 0.95) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(6, 21, 40, 0.7) !important;
+  color: rgba(197, 220, 240, 0.5) !important;
+  font-size: 9px !important;
+}
+
+.leaflet-control-attribution a {
+  color: rgba(26, 255, 237, 0.5) !important;
+}
+
+/* Custom popup styling */
+.leaflet-popup-content-wrapper {
+  background: rgba(6, 21, 40, 0.95) !important;
+  color: #e6f0fa !important;
+  border: 1px solid rgba(26, 255, 237, 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(6, 21, 40, 0.95) !important;
+  border: 1px solid rgba(26, 255, 237, 0.3) !important;
+}
+
+.leaflet-popup-close-button {
+  color: #1affed !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(6, 21, 40, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(26, 255, 237, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 255, 237, 0.5);
+}
+
+/* Marker pulse animation for vessel position */
+@keyframes marker-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.custom-marker-pulse {
+  animation: marker-pulse 2s ease-in-out infinite;
+}
