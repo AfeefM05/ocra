@@ -211,8 +211,8 @@ export default function App() {
   // Desktop / Tablet layout
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-ocean-950">
-      {/* Left Pane: Chat (30%) */}
-      <div className="w-[30%] min-w-[340px] max-w-[440px] flex-shrink-0">
+      {/* Left Sidebar: Chat */}
+      <aside className="w-[360px] min-w-[340px] max-w-[440px] flex-shrink-0 lg:w-[30%]">
         <ChatPanel
           messages={messages}
           voiceState={voice.state}
@@ -225,7 +225,7 @@ export default function App() {
           onQuickAction={handleQuickAction}
           onToggleLowDistraction={handleToggleLowDistraction}
         />
-      </div>
+      </aside>
 
       {/* Right Pane: Map (70%) */}
       <div className="flex-1 relative">

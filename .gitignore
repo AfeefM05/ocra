@@ -8,7 +8,7 @@ frontend/dist-ssr/
 *.local
 .bolt/
 frontend/.bolt/
-
+package-lock.json
 # Python / Backend
 __pycache__/
 backend/__pycache__/
@@ -21,7 +21,7 @@ venv/
 .venv/
 ENV/
 backend/env/
-backend/venv/
+backend/orca/
 backend/.venv/
 
 # Logs & Environment

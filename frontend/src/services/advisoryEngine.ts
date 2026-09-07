@@ -11,7 +11,7 @@ import {
 const now = () => new Date().toISOString();
 
 function makeMessage(
-  role: 'user' | 'assistant',
+  role: 'user' | 'assistant/ m/',
   content: string,
   action?: AdvisoryMessage['action'],
   targetCoordinates?: LatLng,

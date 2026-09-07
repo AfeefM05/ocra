@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { Mic, MicOff, Volume2, VolumeX, Languages, Waves, Fish, AlertTriangle, Navigation, MapPin } from 'lucide-react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { Mic, MicOff, Volume2, VolumeX, Languages, Waves, Fish, AlertTriangle, Navigation, MapPin, Send } from 'lucide-react';
 import type { AdvisoryMessage, LanguageOption } from '@/types';
 import type { VoiceState } from '@/hooks/useVoiceAssistant';
 import { LANGUAGES } from '@/data/mockData';
@@ -47,6 +47,7 @@ export default function ChatPanel({
   onToggleLowDistraction,
 }: ChatPanelProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -56,6 +57,15 @@ export default function ChatPanel({
 
   const isListening = voiceState.status === 'listening';
   const isSpeaking = voiceState.status === 'speaking';
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) return;
+
+    onQuickAction(trimmedQuery);
+    setQuery('');
+  };
 
   const quickActions = [
     { label: 'Fishing Zone', query: 'Show me the nearest fishing zone', icon: Fish },
@@ -73,7 +83,7 @@ export default function ChatPanel({
             <Waves className="w-5 h-5 text-aqua-400" />
           </div>
           <div>
-            <h1 className="text-sm font-semibold text-ocean-50">Ocean-Clear</h1>
+            <h1 className="text-sm font-semibold text-ocean-50">ORCA</h1>
             <p className="text-[10px] text-ocean-300">Marine Advisory System</p>
           </div>
         </div>
@@ -183,6 +193,28 @@ export default function ChatPanel({
           </div>
         </div>
       )}
+
+      <form onSubmit={handleSubmit} className="px-4 py-3 border-t border-ocean-700/50">
+        <div className="flex items-center gap-2 rounded-xl bg-ocean-800/80 border border-ocean-700/60 focus-within:border-aqua-500/60 px-2 py-1.5 transition-colors">
+          <input
+            type="text"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Ask ORCA anything..."
+            aria-label="Ask ORCA anything"
+            className="min-w-0 flex-1 bg-transparent px-2 py-1 text-sm text-ocean-50 placeholder:text-ocean-400 focus:outline-none"
+          />
+          <button
+            type="submit"
+            disabled={!query.trim()}
+            aria-label="Send message"
+            title="Send message"
+            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-aqua-500/20 text-aqua-400 transition-colors hover:bg-aqua-500/30 disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            <Send className="h-4 w-4" />
+          </button>
+        </div>
+      </form>
 
       {/* Voice Controls */}
       <div className="px-4 py-4 bg-ocean-800/60 border-t border-ocean-700/50">

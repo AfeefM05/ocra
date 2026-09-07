@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronUp, ChevronDown, Mic, MicOff, VolumeX, Languages } from 'lucide-react';
+import { ChevronUp, ChevronDown, Mic, MicOff, VolumeX, Languages, Send } from 'lucide-react';
 import type { AdvisoryMessage, LanguageOption } from '@/types';
 import type { VoiceState } from '@/hooks/useVoiceAssistant';
 import { LANGUAGES } from '@/data/mockData';
@@ -29,9 +29,19 @@ export default function MobileDrawer({
   onQuickAction,
 }: MobileDrawerProps) {
   const [drawerState, setDrawerState] = useState<DrawerState>('half');
+  const [query, setQuery] = useState('');
 
   const isListening = voiceState.status === 'listening';
   const isSpeaking = voiceState.status === 'speaking';
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) return;
+
+    onQuickAction(trimmedQuery);
+    setQuery('');
+  };
 
   const cycleDrawer = () => {
     setDrawerState((prev) => {
@@ -156,6 +166,28 @@ export default function MobileDrawer({
               })}
             </div>
           </div>
+
+          <form onSubmit={handleSubmit} className="px-4 pb-3">
+            <div className="flex items-center gap-2 rounded-xl bg-ocean-800/80 border border-ocean-700/60 focus-within:border-aqua-500/60 px-2 py-1.5 transition-colors">
+              <input
+                type="text"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Ask ORCA anything..."
+                aria-label="Ask ORCA anything"
+                className="min-w-0 flex-1 bg-transparent px-2 py-1 text-sm text-ocean-50 placeholder:text-ocean-400 focus:outline-none"
+              />
+              <button
+                type="submit"
+                disabled={!query.trim()}
+                aria-label="Send message"
+                title="Send message"
+                className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-aqua-500/20 text-aqua-400 transition-colors hover:bg-aqua-500/30 disabled:cursor-not-allowed disabled:opacity-30"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </div>
+          </form>
 
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto px-4 pb-2 space-y-2">
